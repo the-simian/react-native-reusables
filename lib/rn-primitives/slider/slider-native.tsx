@@ -77,7 +77,7 @@ Range.displayName = 'RangeNativeSlider';
 const Thumb = React.forwardRef<ViewRef, SlottableViewProps>(
   ({ asChild, ...props }, ref) => {
     const Component = asChild ? Slot.View : View;
-    return <Component accessibilityRole='adjustable' ref={ref} {...props} />;
+    return <Component role='slider' ref={ref} {...props} />;
   }
 );
 

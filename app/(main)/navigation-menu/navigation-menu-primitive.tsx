@@ -43,12 +43,12 @@ export default function MenubarPrimitiveScreen() {
             setValue('');
           }}
           style={StyleSheet.absoluteFill}
-          className='bg-red-500 absolute'
+          className='absolute bg-red-500'
         />
       )}
       <View
-        pointerEvents={'box-none'}
-        className='flex-1 items-center justify-center p-6 gap-12'
+        style={{ pointerEvents: 'box-none' }}
+        className='items-center justify-center flex-1 gap-12 p-6'
       >
         <NavigationMenu.Root
           onValueChange={setValue}
@@ -58,53 +58,53 @@ export default function MenubarPrimitiveScreen() {
           <NavigationMenu.List className='flex-row items-center gap-5'>
             <NavigationMenu.Item value='learn' className='bg-background'>
               <NavigationMenu.Trigger>
-                <Text className='text-foreground text-xl'>Learn</Text>
+                <Text className='text-xl text-foreground'>Learn</Text>
               </NavigationMenu.Trigger>
               <NavigationMenu.Portal>
                 <NavigationMenu.Content
                   insets={contentInsets}
-                  className='bg-blue-500 absolute'
+                  className='absolute bg-blue-500'
                 >
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>Stiches</Text>
+                    <Text className='text-xl text-foreground'>Stiches</Text>
                   </NavigationMenu.Link>
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>Colors</Text>
+                    <Text className='text-xl text-foreground'>Colors</Text>
                   </NavigationMenu.Link>
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>Icons</Text>
+                    <Text className='text-xl text-foreground'>Icons</Text>
                   </NavigationMenu.Link>
                 </NavigationMenu.Content>
               </NavigationMenu.Portal>
             </NavigationMenu.Item>
             <NavigationMenu.Item value='overview' className='bg-background'>
               <NavigationMenu.Trigger>
-                <Text className='text-foreground text-xl'>Overview</Text>
+                <Text className='text-xl text-foreground'>Overview</Text>
               </NavigationMenu.Trigger>
               <NavigationMenu.Portal>
                 <NavigationMenu.Content
                   insets={contentInsets}
-                  className='bg-blue-500 absolute'
+                  className='absolute bg-blue-500'
                 >
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>
+                    <Text className='text-xl text-foreground'>
                       Introduction
                     </Text>
                   </NavigationMenu.Link>
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>
+                    <Text className='text-xl text-foreground'>
                       Getting Started
                     </Text>
                   </NavigationMenu.Link>
                   <NavigationMenu.Link asChild onPress={closeAll}>
-                    <Text className='text-foreground text-xl'>Styling</Text>
+                    <Text className='text-xl text-foreground'>Styling</Text>
                   </NavigationMenu.Link>
                 </NavigationMenu.Content>
               </NavigationMenu.Portal>
             </NavigationMenu.Item>
             <NavigationMenu.Item value='terminal' className='bg-background'>
               <NavigationMenu.Link onPress={closeAll} className='z-50'>
-                <Text className='text-foreground text-xl'>Github</Text>
+                <Text className='text-xl text-foreground'>Github</Text>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>

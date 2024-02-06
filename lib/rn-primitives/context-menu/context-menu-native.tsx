@@ -349,7 +349,7 @@ const Content = React.forwardRef<
       <Component
         ref={ref}
         role='menu'
-        nativeID={nativeID}
+        id={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
         onLayout={onLayout}
@@ -687,7 +687,7 @@ const SubTrigger = React.forwardRef<
         role='menuitem'
         aria-expanded={open}
         accessibilityState={{ expanded: open, disabled: !!disabled }}
-        nativeID={nativeID}
+        id={nativeID}
         onPress={onPress}
         disabled={disabled}
         aria-disabled={!!disabled}

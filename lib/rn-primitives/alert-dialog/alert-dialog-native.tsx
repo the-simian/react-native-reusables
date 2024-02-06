@@ -157,7 +157,7 @@ const Content = React.forwardRef<
     <Component
       ref={ref}
       role='alertdialog'
-      nativeID={nativeID}
+      id={nativeID}
       aria-labelledby={`${nativeID}_label`}
       aria-describedby={`${nativeID}_desc`}
       aria-modal={true}
@@ -225,12 +225,7 @@ const Title = React.forwardRef<TextRef, SlottableTextProps>(
     const { nativeID } = useAlertDialogContext();
     const Component = asChild ? Slot.Text : Text;
     return (
-      <Component
-        ref={ref}
-        role='heading'
-        nativeID={`${nativeID}_label`}
-        {...props}
-      />
+      <Component ref={ref} role='heading' id={`${nativeID}_label`} {...props} />
     );
   }
 );
@@ -241,7 +236,7 @@ const Description = React.forwardRef<TextRef, SlottableTextProps>(
   ({ asChild, ...props }, ref) => {
     const { nativeID } = useAlertDialogContext();
     const Component = asChild ? Slot.Text : Text;
-    return <Component ref={ref} nativeID={`${nativeID}_desc`} {...props} />;
+    return <Component ref={ref} id={`${nativeID}_desc`} {...props} />;
   }
 );
 

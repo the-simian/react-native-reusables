@@ -309,7 +309,7 @@ const Content = React.forwardRef<
       <Component
         ref={ref}
         role='tooltip'
-        nativeID={nativeID}
+        id={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
         onLayout={onLayout}

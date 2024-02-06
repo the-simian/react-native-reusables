@@ -100,9 +100,8 @@ export default function MenubarPrimitiveScreen() {
           />
         )}
         <View
-          style={{ height: window.height }}
-          pointerEvents={'box-none'}
-          className=' items-center justify-center p-6 gap-12'
+          style={{ height: window.height, pointerEvents: 'box-none' }}
+          className='items-center justify-center gap-12 p-6 '
         >
           {Platform.OS !== 'web' && (
             <Pressable
@@ -124,7 +123,7 @@ export default function MenubarPrimitiveScreen() {
           >
             <Menubar.Menu value='file' className='bg-background'>
               <Menubar.Trigger onPress={closeAllSubMenus}>
-                <Text className='text-foreground text-xl'>File</Text>
+                <Text className='text-xl text-foreground'>File</Text>
               </Menubar.Trigger>
               <Menubar.Portal hostName={portalHost}>
                 {/* {!portalHost && blockNavWhenPortalRoot && (
@@ -141,17 +140,17 @@ export default function MenubarPrimitiveScreen() {
                 >
                   <Menubar.Group>
                     <Menubar.Item onPress={closeAllSubMenus}>
-                      <Text className='text-foreground text-xl'>
+                      <Text className='text-xl text-foreground'>
                         New Text File
                       </Text>
                     </Menubar.Item>
                     <Menubar.Item onPress={closeAllSubMenus}>
-                      <Text className='text-foreground text-xl'>
+                      <Text className='text-xl text-foreground'>
                         New File...
                       </Text>
                     </Menubar.Item>
                     <Menubar.Item onPress={closeAllSubMenus}>
-                      <Text className='text-foreground text-xl'>
+                      <Text className='text-xl text-foreground'>
                         New Window
                       </Text>
                     </Menubar.Item>
@@ -159,20 +158,20 @@ export default function MenubarPrimitiveScreen() {
                   <Menubar.Separator />
                   <Menubar.Group>
                     <Menubar.Item onPress={closeAllSubMenus}>
-                      <Text className='text-foreground text-xl'>Open...</Text>
+                      <Text className='text-xl text-foreground'>Open...</Text>
                     </Menubar.Item>
                     <Menubar.Sub open={openRecent} onOpenChange={setOpenRecent}>
                       <Menubar.SubTrigger>
-                        <Text className='text-foreground text-xl'>
+                        <Text className='text-xl text-foreground'>
                           {'>'} Open Recent
                         </Text>
                       </Menubar.SubTrigger>
                       <Menubar.SubContent className='bg-background'>
                         <Menubar.Item onPress={closeAllSubMenus}>
-                          <Text className='text-foreground text-xl'>expo</Text>
+                          <Text className='text-xl text-foreground'>expo</Text>
                         </Menubar.Item>
                         <Menubar.Item onPress={closeAllSubMenus}>
-                          <Text className='text-foreground text-xl'>
+                          <Text className='text-xl text-foreground'>
                             native-wind
                           </Text>
                         </Menubar.Item>
@@ -184,7 +183,7 @@ export default function MenubarPrimitiveScreen() {
             </Menubar.Menu>
             <Menubar.Menu value='keyboard' className='bg-background'>
               <Menubar.Trigger onPress={closeAllSubMenus}>
-                <Text className='text-foreground text-xl'>Keyboard</Text>
+                <Text className='text-xl text-foreground'>Keyboard</Text>
               </Menubar.Trigger>
               <Menubar.Portal hostName={portalHost}>
                 {/* {!portalHost && blockNavWhenPortalRoot && (
@@ -207,12 +206,12 @@ export default function MenubarPrimitiveScreen() {
                       className='flex-row items-center gap-3'
                     >
                       <Menubar.ItemIndicator className='w-4 h-4 bg-red-500' />
-                      <Text className='text-foreground text-xl'>
+                      <Text className='text-xl text-foreground'>
                         Use Same Keyboard Language
                       </Text>
                     </Menubar.CheckboxItem>
                     <Menubar.Item onPress={closeAllSubMenus}>
-                      <Text className='text-foreground text-xl'>
+                      <Text className='text-xl text-foreground'>
                         Keyboard Settings
                       </Text>
                     </Menubar.Item>
@@ -224,7 +223,7 @@ export default function MenubarPrimitiveScreen() {
                       onOpenChange={setShowMoreOptions}
                     >
                       <Menubar.SubTrigger>
-                        <Text className='text-foreground text-xl'>
+                        <Text className='text-xl text-foreground'>
                           {'>'} More Options...
                         </Text>
                       </Menubar.SubTrigger>
@@ -238,7 +237,7 @@ export default function MenubarPrimitiveScreen() {
                             closeOnPress={false}
                             className='flex-row items-center gap-3'
                           >
-                            <Text className='text-foreground text-xl'>
+                            <Text className='text-xl text-foreground'>
                               Hardware
                             </Text>
                             <Menubar.ItemIndicator className='w-4 h-4 bg-blue-500' />
@@ -248,7 +247,7 @@ export default function MenubarPrimitiveScreen() {
                             closeOnPress={false}
                             className='flex-row items-center gap-3'
                           >
-                            <Text className='text-foreground text-xl'>
+                            <Text className='text-xl text-foreground'>
                               Software
                             </Text>
                             <Menubar.ItemIndicator className='w-4 h-4 bg-blue-500' />
@@ -262,7 +261,7 @@ export default function MenubarPrimitiveScreen() {
             </Menubar.Menu>
             <Menubar.Menu value='terminal' className=' bg-background'>
               <Menubar.Trigger className='z-50'>
-                <Text className='text-foreground text-xl'>Terminal</Text>
+                <Text className='text-xl text-foreground'>Terminal</Text>
               </Menubar.Trigger>
               <Menubar.Portal hostName={portalHost}>
                 {/* {!portalHost && blockNavWhenPortalRoot && (
@@ -280,7 +279,7 @@ export default function MenubarPrimitiveScreen() {
                   align='end'
                 >
                   <Menubar.Item onPress={closeAllSubMenus}>
-                    <Text className='text-foreground text-xl'>
+                    <Text className='text-xl text-foreground'>
                       New Terminal
                     </Text>
                   </Menubar.Item>
@@ -298,8 +297,7 @@ export default function MenubarPrimitiveScreen() {
         </View>
 
         <View
-          pointerEvents={'box-none'}
-          style={{ height: window.height / 2 }}
+          style={{ height: window.height / 2, pointerEvents: 'box-none' }}
         ></View>
       </ScrollView>
       <PortalHost name='inner' />

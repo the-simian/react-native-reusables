@@ -118,7 +118,7 @@ const RadioGroupItem = React.forwardRef<
         <Label
           onPress={handleOnPress}
           className={cn('text-xl', labelClass)}
-          nativeID={name}
+          id={name}
         >
           {children}
         </Label>

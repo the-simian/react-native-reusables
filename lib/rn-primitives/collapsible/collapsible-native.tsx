@@ -65,7 +65,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         key={`trigger-${nativeID}-${open}`}
         ref={ref}
-        nativeID={nativeID}
+        id={nativeID}
         aria-disabled={(disabled || disabledProp) ?? undefined}
         role='button'
         onPress={onPress}

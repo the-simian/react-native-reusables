@@ -112,7 +112,7 @@ const CollapsibleTrigger = React.forwardRef<
         onPress={handleOnPress}
         disabled={disabled}
         aria-expanded={visible}
-        nativeID={nativeID}
+        id={nativeID}
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
         {...props}

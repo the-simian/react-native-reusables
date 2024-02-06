@@ -51,7 +51,7 @@ function RadioGroupItemWithLabel({
       </RadioGroup.Item>
       <Label.Root onPress={onLabelPress}>
         <Label.Text
-          nativeID={`label-for-${value}`}
+          id={`label-for-${value}`}
           className='text-xl text-foreground'
         >
           {value}

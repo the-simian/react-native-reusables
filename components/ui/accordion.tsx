@@ -139,7 +139,7 @@ const AccordionTrigger = React.forwardRef<
         onPress={onPress}
         disabled={disabled}
         aria-expanded={isOpen}
-        nativeID={nativeID}
+        id={nativeID}
         ref={ref}
         className={cn('flex-row justify-between items-center p-4', className)}
         {...props}

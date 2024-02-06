@@ -65,7 +65,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
     return (
       <Component
         ref={ref}
-        nativeID={nativeID}
+        id={nativeID}
         aria-disabled={disabled}
         role='checkbox'
         aria-checked={checked}

@@ -74,7 +74,7 @@ function LabelledInput({
   return (
     <View className='web:grid web:grid-cols-3 flex-row items-center gap-4'>
       <Label onPress={onPress} className='w-24'>
-        <LabelText nativeID={id}>{label}</LabelText>
+        <LabelText id={id}>{label}</LabelText>
       </Label>
       <Input
         ref={inputRef}

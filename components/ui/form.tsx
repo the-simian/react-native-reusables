@@ -123,7 +123,7 @@ const FormLabel = React.forwardRef<
     <Label
       ref={ref}
       className={cn(error && 'text-destructive', className)}
-      nativeID={formItemNativeID}
+      id={formItemNativeID}
       {...props}
     />
   );
@@ -139,7 +139,7 @@ const FormDescription = React.forwardRef<
   return (
     <Text
       ref={ref}
-      nativeID={formDescriptionNativeID}
+      id={formDescriptionNativeID}
       className={cn('text-sm text-muted-foreground pt-1', className)}
       {...props}
     />
@@ -163,7 +163,7 @@ const FormMessage = React.forwardRef<
       entering={FadeInDown}
       exiting={FadeOut.duration(275)}
       ref={ref}
-      nativeID={formMessageNativeID}
+      id={formMessageNativeID}
       className={cn('text-sm font-medium text-destructive', className)}
       {...props}
     >
@@ -228,7 +228,7 @@ const FormInput = React.forwardRef<
   return (
     <FormItem>
       {!!label && (
-        <FormLabel nativeID={formItemNativeID} onPress={handleOnLabelPress}>
+        <FormLabel id={formItemNativeID} onPress={handleOnLabelPress}>
           {label}
         </FormLabel>
       )}
@@ -290,7 +290,7 @@ const FormTextarea = React.forwardRef<
   return (
     <FormItem>
       {!!label && (
-        <FormLabel nativeID={formItemNativeID} onPress={handleOnLabelPress}>
+        <FormLabel id={formItemNativeID} onPress={handleOnLabelPress}>
           {label}
         </FormLabel>
       )}
@@ -359,7 +359,7 @@ const FormCheckbox = React.forwardRef<
           {...props}
         />
         {!!label && (
-          <FormLabel nativeID={formItemNativeID} onPress={handleOnLabelPress}>
+          <FormLabel id={formItemNativeID} onPress={handleOnLabelPress}>
             {label}
           </FormLabel>
         )}
@@ -385,7 +385,7 @@ const FormDatePicker = React.forwardRef<
 
   return (
     <FormItem>
-      {!!label && <FormLabel nativeID={formItemNativeID}>{label}</FormLabel>}
+      {!!label && <FormLabel id={formItemNativeID}>{label}</FormLabel>}
       <BottomSheet>
         <BottomSheetOpenTrigger asChild>
           <Button
@@ -503,7 +503,7 @@ const FormRadioGroup = React.forwardRef<
   return (
     <FormItem className='gap-3'>
       <View>
-        {!!label && <FormLabel nativeID={formItemNativeID}>{label}</FormLabel>}
+        {!!label && <FormLabel id={formItemNativeID}>{label}</FormLabel>}
         {!!description && (
           <FormDescription className='pt-0'>{description}</FormDescription>
         )}
@@ -542,7 +542,7 @@ const FormCombobox = React.forwardRef<
 
   return (
     <FormItem>
-      {!!label && <FormLabel nativeID={formItemNativeID}>{label}</FormLabel>}
+      {!!label && <FormLabel id={formItemNativeID}>{label}</FormLabel>}
       <Combobox
         ref={ref}
         placeholder='Select framework'
@@ -584,7 +584,7 @@ const FormSelect = React.forwardRef<
 
   return (
     <FormItem>
-      {!!label && <FormLabel nativeID={formItemNativeID}>{label}</FormLabel>}
+      {!!label && <FormLabel id={formItemNativeID}>{label}</FormLabel>}
       <Select
         ref={ref}
         aria-labelledby={formItemNativeID}
@@ -652,7 +652,7 @@ const FormSwitch = React.forwardRef<
           {...props}
         />
         {!!label && (
-          <FormLabel nativeID={formItemNativeID} onPress={handleOnLabelPress}>
+          <FormLabel id={formItemNativeID} onPress={handleOnLabelPress}>
             {label}
           </FormLabel>
         )}

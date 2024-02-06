@@ -171,7 +171,7 @@ const Content = React.forwardRef<
     <Component
       ref={ref}
       role='dialog'
-      nativeID={nativeID}
+      id={nativeID}
       aria-labelledby={`${nativeID}_label`}
       aria-describedby={`${nativeID}_desc`}
       aria-modal={true}
@@ -211,9 +211,7 @@ Close.displayName = 'CloseNativeDialog';
 
 const Title = React.forwardRef<TextRef, SlottableTextProps>((props, ref) => {
   const { nativeID } = useDialogContext();
-  return (
-    <Text ref={ref} role='heading' nativeID={`${nativeID}_label`} {...props} />
-  );
+  return <Text ref={ref} role='heading' id={`${nativeID}_label`} {...props} />;
 });
 
 Title.displayName = 'TitleNativeDialog';
@@ -221,7 +219,7 @@ Title.displayName = 'TitleNativeDialog';
 const Description = React.forwardRef<TextRef, SlottableTextProps>(
   (props, ref) => {
     const { nativeID } = useDialogContext();
-    return <Text ref={ref} nativeID={`${nativeID}_desc`} {...props} />;
+    return <Text ref={ref} id={`${nativeID}_desc`} {...props} />;
   }
 );
 

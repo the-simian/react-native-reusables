@@ -130,12 +130,7 @@ const Title = React.forwardRef<TextRef, SlottableTextProps>(
 
     const Component = asChild ? Slot.Text : Text;
     return (
-      <Component
-        ref={ref}
-        role='heading'
-        nativeID={`${nativeID}_label`}
-        {...props}
-      />
+      <Component ref={ref} role='heading' id={`${nativeID}_label`} {...props} />
     );
   }
 );
@@ -147,7 +142,7 @@ const Description = React.forwardRef<TextRef, SlottableTextProps>(
     const { nativeID } = useToastContext();
 
     const Component = asChild ? Slot.Text : Text;
-    return <Component ref={ref} nativeID={`${nativeID}_desc`} {...props} />;
+    return <Component ref={ref} id={`${nativeID}_desc`} {...props} />;
   }
 );
 

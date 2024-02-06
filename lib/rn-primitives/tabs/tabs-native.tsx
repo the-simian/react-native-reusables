@@ -89,7 +89,7 @@ const Trigger = React.forwardRef<
       <TriggerContext.Provider value={{ value: tabValue }}>
         <Component
           ref={ref}
-          nativeID={`${nativeID}-tab-${tabValue}`}
+          id={`${nativeID}-tab-${tabValue}`}
           aria-disabled={!!disabled}
           aria-selected={rootValue === tabValue}
           role='tab'
