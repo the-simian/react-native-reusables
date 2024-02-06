@@ -1,15 +1,15 @@
-import React from 'react';
-import { Platform, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Button } from '~/components/universal-ui/button';
-import { Input } from '~/components/universal-ui/input';
-import { Label, LabelText } from '~/components/universal-ui/label';
+import React from "react";
+import { Platform, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Button } from "~/components/universal-ui/button";
+import { Input } from "~/components/universal-ui/input";
+import { Label, LabelText } from "~/components/universal-ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '~/components/universal-ui/popover';
-import { Text } from '~/components/universal-ui/typography';
+} from "~/components/universal-ui/popover";
+import { Text } from "~/components/universal-ui/typography";
 
 export default function PopoverUniversalScreen() {
   const [open, setOpen] = React.useState(false);
@@ -22,32 +22,32 @@ export default function PopoverUniversalScreen() {
   };
 
   return (
-    <View className='flex-1 justify-center items-center p-6'>
+    <View className="flex-1 justify-center items-center p-6">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant='outline'>
+          <Button variant="outline">
             <Text>Open popover</Text>
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          side={Platform.OS === 'web' ? 'bottom' : 'top'}
+          side={Platform.OS === "web" ? "bottom" : "top"}
           insets={contentInsets}
-          className='w-80'
+          className="w-80"
         >
-          <View className='web:grid gap-4'>
-            <View className='space-y-2'>
-              <Text className='font-medium leading-none native:text-xl'>
+          <View className="web:grid gap-4">
+            <View className="space-y-2">
+              <Text className="font-medium leading-none native:text-xl">
                 Dimensions
               </Text>
-              <Text className='text-sm text-muted-foreground'>
+              <Text className="text-sm text-muted-foreground">
                 Set the dimensions for the layer.
               </Text>
             </View>
-            <View className='web:grid gap-2'>
-              <LabelledInput autoFocus id='width' label='Width' />
-              <LabelledInput id='maxWidth' label='Max. Width' />
-              <LabelledInput id='height' label='Height' />
-              <LabelledInput id='maxHeight' label='Max. Height' />
+            <View className="web:grid gap-2">
+              <LabelledInput autoFocus id="width" label="Width" />
+              <LabelledInput id="maxWidth" label="Max. Width" />
+              <LabelledInput id="height" label="Height" />
+              <LabelledInput id="maxHeight" label="Max. Height" />
             </View>
           </View>
         </PopoverContent>
@@ -72,16 +72,16 @@ function LabelledInput({
   }
 
   return (
-    <View className='web:grid web:grid-cols-3 flex-row items-center gap-4'>
-      <Label onPress={onPress} className='w-24'>
-        <LabelText nativeID={id}>{label}</LabelText>
+    <View className="web:grid web:grid-cols-3 flex-row items-center gap-4">
+      <Label onPress={onPress} className="w-24">
+        <LabelText id={id}>{label}</LabelText>
       </Label>
       <Input
         ref={inputRef}
         autoFocus={autoFocus}
         aria-labelledby={id}
-        defaultValue='25px'
-        className='web:col-span-2 flex-1 h-8'
+        defaultValue="25px"
+        className="web:col-span-2 flex-1 h-8"
       />
     </View>
   );

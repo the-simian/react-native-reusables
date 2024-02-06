@@ -1,10 +1,10 @@
-import { VariantProps } from 'class-variance-authority';
-import React from 'react';
-import { GestureResponderEvent, Pressable, View } from 'react-native';
-import Animated, { FadeInDown, FadeOutUp } from 'react-native-reanimated';
-import { buttonVariants } from '~/components/ui/button';
-import * as Slot from '~/lib/rn-primitives/slot/slot-native';
-import { cn } from '~/lib/utils';
+import { VariantProps } from "class-variance-authority";
+import React from "react";
+import { GestureResponderEvent, Pressable, View } from "react-native";
+import Animated, { FadeInDown, FadeOutUp } from "react-native-reanimated";
+import { buttonVariants } from "~/components/ui/button";
+import * as Slot from "~/lib/rn-primitives/slot/slot-native";
+import { cn } from "~/lib/utils";
 
 interface CollapsibleProps {
   open?: boolean;
@@ -44,8 +44,8 @@ const Collapsible = React.forwardRef<
       >
         <View
           ref={ref}
-          role='presentation'
-          className={cn('gap-3', className)}
+          role="presentation"
+          className={cn("gap-3", className)}
           {...props}
         />
       </CollapsibleContext.Provider>
@@ -57,7 +57,7 @@ function useCollapsibleContext() {
   const context = React.useContext(CollapsibleContext);
   if (!context) {
     throw new Error(
-      'Collapsible compound components cannot be rendered outside the Collapsible component'
+      "Collapsible compound components cannot be rendered outside the Collapsible component"
     );
   }
   return context;
@@ -69,10 +69,10 @@ const CollapsibleHeader = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <View
-      role='heading'
+      role="heading"
       ref={ref}
       className={cn(
-        'flex-row items-center justify-between gap-3 px-4',
+        "flex-row items-center justify-between gap-3 px-4",
         className
       )}
       {...props}
@@ -91,8 +91,8 @@ const CollapsibleTrigger = React.forwardRef<
     {
       className,
       onPress,
-      variant = 'outline',
-      size = 'sm',
+      variant = "outline",
+      size = "sm",
       asChild = false,
       ...props
     },
@@ -112,7 +112,7 @@ const CollapsibleTrigger = React.forwardRef<
         onPress={handleOnPress}
         disabled={disabled}
         aria-expanded={visible}
-        nativeID={nativeID}
+        id={nativeID}
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
         {...props}
@@ -132,9 +132,9 @@ const CollapsibleContent = React.forwardRef<
     <Animated.View
       entering={FadeInDown}
       exiting={FadeOutUp.duration(150)}
-      role='summary'
+      role="summary"
       ref={ref}
-      className={cn('gap-3', className)}
+      className={cn("gap-3", className)}
       key={`collapsible-content-${nativeID}`}
       aria-labelledbyledBy={nativeID}
       {...props}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BackHandler,
   Pressable,
@@ -6,26 +6,26 @@ import {
   type GestureResponderEvent,
   type LayoutChangeEvent,
   type LayoutRectangle,
-} from 'react-native';
-import { StoreApi, createStore, useStore } from 'zustand';
+} from "react-native";
+import { StoreApi, createStore, useStore } from "zustand";
 import {
   useRelativePosition,
   type LayoutPosition,
-} from '../hooks/useRelativePosition';
-import { Portal as RNPPortal } from '../portal';
-import * as Slot from '../slot';
+} from "../hooks/useRelativePosition";
+import { Portal as RNPPortal } from "../portal";
+import * as Slot from "../slot";
 import type {
   PositionedContentProps,
   PressableRef,
   SlottablePressableProps,
   SlottableViewProps,
   ViewRef,
-} from '../types';
+} from "../types";
 import type {
   TooltipOverlayProps,
   TooltipPortalProps,
   TooltipRootProps,
-} from './types';
+} from "./types";
 
 interface RootStoreContext {
   triggerPosition: LayoutPosition | null;
@@ -78,13 +78,13 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & TooltipRootProps>(
   }
 );
 
-Root.displayName = 'RootNativeTooltip';
+Root.displayName = "RootNativeTooltip";
 
 function useTooltipContext() {
   const context = React.useContext(RootContext);
   if (!context) {
     throw new Error(
-      'Tooltip compound components cannot be rendered outside the Tooltip component'
+      "Tooltip compound components cannot be rendered outside the Tooltip component"
     );
   }
   return context;
@@ -94,7 +94,7 @@ function useRootStoreContext<T>(selector: (state: RootStoreContext) => T): T {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'Tooltip compound components cannot be rendered outside the Tooltip component'
+      "Tooltip compound components cannot be rendered outside the Tooltip component"
     );
   }
   return useStore(store, selector);
@@ -104,7 +104,7 @@ function useGetRootStore() {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'Tooltip compound components cannot be rendered outside the Tooltip component'
+      "Tooltip compound components cannot be rendered outside the Tooltip component"
     );
   }
   return store;
@@ -144,7 +144,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         {...props}
@@ -153,7 +153,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Trigger.displayName = 'TriggerNativeTooltip';
+Trigger.displayName = "TriggerNativeTooltip";
 
 /**
  * @warning when using a custom `<PortalHost />`, you might have to adjust the Content's sideOffset to account for nav elements like headers.
@@ -225,7 +225,7 @@ const Overlay = React.forwardRef<
   }
 );
 
-Overlay.displayName = 'OverlayNativeTooltip';
+Overlay.displayName = "OverlayNativeTooltip";
 
 /**
  * @info `position`, `top`, `left`, and `maxWidth` style properties are controlled internally. Opt out of this behavior on native by setting `disablePositioningStyle` to `true`.
@@ -238,8 +238,8 @@ const Content = React.forwardRef<
     {
       asChild = false,
       forceMount,
-      align = 'center',
-      side = 'top',
+      align = "center",
+      side = "top",
       sideOffset = 0,
       alignOffset = 0,
       avoidCollisions = true,
@@ -266,7 +266,7 @@ const Content = React.forwardRef<
 
     React.useEffect(() => {
       const backHandler = BackHandler.addEventListener(
-        'hardwareBackPress',
+        "hardwareBackPress",
         () => {
           setTriggerPosition(null);
           setContentLayout(null);
@@ -308,8 +308,8 @@ const Content = React.forwardRef<
     return (
       <Component
         ref={ref}
-        role='tooltip'
-        nativeID={nativeID}
+        role="tooltip"
+        id={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
         onLayout={onLayout}
@@ -320,7 +320,7 @@ const Content = React.forwardRef<
   }
 );
 
-Content.displayName = 'ContentNativeTooltip';
+Content.displayName = "ContentNativeTooltip";
 
 export { Content, Overlay, Portal, Root, Trigger };
 

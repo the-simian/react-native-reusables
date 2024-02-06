@@ -1,6 +1,6 @@
-import { ChevronDown } from 'lucide-react-native';
-import React from 'react';
-import { LayoutChangeEvent, Pressable, View } from 'react-native';
+import { ChevronDown } from "lucide-react-native";
+import React from "react";
+import { LayoutChangeEvent, Pressable, View } from "react-native";
 import Animated, {
   AnimatedRef,
   Extrapolation,
@@ -13,18 +13,18 @@ import Animated, {
   useDerivedValue,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated';
-import { Separator } from '~/components/ui/separator';
-import { cn } from '~/lib/utils';
+} from "react-native-reanimated";
+import { Separator } from "~/components/ui/separator";
+import { cn } from "~/lib/utils";
 
 const Accordion = React.forwardRef<
   React.ElementRef<typeof View>,
   React.ComponentPropsWithoutRef<typeof View>
 >(({ className, ...props }, ref) => (
-  <View role='presentation' ref={ref} className={className} {...props} />
+  <View role="presentation" ref={ref} className={className} {...props} />
 ));
 
-Accordion.displayName = 'Accordion';
+Accordion.displayName = "Accordion";
 
 interface AccordionItemProps {
   disabled?: boolean;
@@ -73,7 +73,7 @@ const AccordionItem = React.forwardRef<
       >
         <View
           ref={ref}
-          className={cn(className, 'overflow-hidden')}
+          className={cn(className, "overflow-hidden")}
           {...props}
         />
       </AccordionItemContext.Provider>
@@ -81,13 +81,13 @@ const AccordionItem = React.forwardRef<
   }
 );
 
-AccordionItem.displayName = 'AccordionItem';
+AccordionItem.displayName = "AccordionItem";
 
 function useAccordionItemContext() {
   const context = React.useContext(AccordionItemContext);
   if (!context) {
     throw new Error(
-      'AccordionItem compound components cannot be rendered outside the AccordionItem component'
+      "AccordionItem compound components cannot be rendered outside the AccordionItem component"
     );
   }
   return context;
@@ -95,7 +95,7 @@ function useAccordionItemContext() {
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof Pressable>,
-  Omit<React.ComponentPropsWithoutRef<typeof Pressable>, 'onPress'> & {
+  Omit<React.ComponentPropsWithoutRef<typeof Pressable>, "onPress"> & {
     children: React.ReactNode;
   }
 >(({ children, className, ...props }, ref) => {
@@ -114,7 +114,7 @@ const AccordionTrigger = React.forwardRef<
     transform: [
       {
         rotate:
-          contentHeight.value === 0 ? '0deg' : `${progress.value * 180}deg`,
+          contentHeight.value === 0 ? "0deg" : `${progress.value * 180}deg`,
       },
     ],
     opacity: interpolate(progress.value, [0, 1], [1, 0.8], Extrapolation.CLAMP),
@@ -124,7 +124,7 @@ const AccordionTrigger = React.forwardRef<
     if (disabled) return;
     if (contentHeight.value === 0) {
       runOnUI(() => {
-        'worklet';
+        "worklet";
         contentHeight.value = measure(innerContentRef)?.height ?? 0;
       })();
     }
@@ -139,14 +139,14 @@ const AccordionTrigger = React.forwardRef<
         onPress={onPress}
         disabled={disabled}
         aria-expanded={isOpen}
-        nativeID={nativeID}
+        id={nativeID}
         ref={ref}
-        className={cn('flex-row justify-between items-center p-4', className)}
+        className={cn("flex-row justify-between items-center p-4", className)}
         {...props}
       >
-        <View className={'flex-1'}>{children}</View>
+        <View className={"flex-1"}>{children}</View>
         <Animated.View style={chevronAnimationStyle}>
-          <ChevronDown className='text-foreground' />
+          <ChevronDown className="text-foreground" />
         </Animated.View>
       </Pressable>
       <Separator />
@@ -154,11 +154,11 @@ const AccordionTrigger = React.forwardRef<
   );
 });
 
-AccordionTrigger.displayName = 'AccordionTrigger';
+AccordionTrigger.displayName = "AccordionTrigger";
 
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof Animated.View>,
-  Omit<React.ComponentPropsWithoutRef<typeof Animated.View>, 'onLayout'> & {
+  Omit<React.ComponentPropsWithoutRef<typeof Animated.View>, "onLayout"> & {
     children: React.ReactNode;
   }
 >(({ children, className, ...props }, ref) => {
@@ -187,12 +187,12 @@ const AccordionContent = React.forwardRef<
 
   return (
     <Animated.View style={heightAnimationStyle} aria-labelledby={nativeID}>
-      <View className='absolute top-0 w-full' ref={innerContentRef}>
+      <View className="absolute top-0 w-full" ref={innerContentRef}>
         <Animated.View
           ref={ref}
-          className={cn('pb-4 pt-0', className, 'flex-1')}
+          className={cn("pb-4 pt-0", className, "flex-1")}
           onLayout={onLayout}
-          role='summary'
+          role="summary"
           {...props}
         >
           {children}
@@ -202,6 +202,6 @@ const AccordionContent = React.forwardRef<
   );
 });
 
-AccordionContent.displayName = 'AccordionContent';
+AccordionContent.displayName = "AccordionContent";
 
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

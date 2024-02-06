@@ -1,13 +1,13 @@
-import React from 'react';
-import { Pressable, View, type GestureResponderEvent } from 'react-native';
-import * as Slot from '../slot';
+import React from "react";
+import { Pressable, View, type GestureResponderEvent } from "react-native";
+import * as Slot from "../slot";
 import type {
   PressableRef,
   SlottablePressableProps,
   SlottableViewProps,
   ViewRef,
-} from '../types';
-import type { CollapsibleContentProps, CollapsibleRootProps } from './types';
+} from "../types";
+import type { CollapsibleContentProps, CollapsibleRootProps } from "./types";
 
 interface RootContext extends CollapsibleRootProps {
   nativeID: string;
@@ -35,13 +35,13 @@ const Root = React.forwardRef<
   );
 });
 
-Root.displayName = 'RootNativeCollapsible';
+Root.displayName = "RootNativeCollapsible";
 
 function useCollapsibleContext() {
   const context = React.useContext(CollapsibleContext);
   if (!context) {
     throw new Error(
-      'Collapsible compound components cannot be rendered outside the Collapsible component'
+      "Collapsible compound components cannot be rendered outside the Collapsible component"
     );
   }
   return context;
@@ -65,9 +65,9 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         key={`trigger-${nativeID}-${open}`}
         ref={ref}
-        nativeID={nativeID}
+        id={nativeID}
         aria-disabled={(disabled || disabledProp) ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         accessibilityState={{
           expanded: open,
@@ -80,7 +80,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Trigger.displayName = 'TriggerNativeCollapsible';
+Trigger.displayName = "TriggerNativeCollapsible";
 
 const Content = React.forwardRef<
   ViewRef,
@@ -100,12 +100,12 @@ const Content = React.forwardRef<
       ref={ref}
       aria-hidden={!(forceMount || open)}
       aria-labelledby={nativeID}
-      role={'region'}
+      role={"region"}
       {...props}
     />
   );
 });
 
-Content.displayName = 'ContentNativeCollapsible';
+Content.displayName = "ContentNativeCollapsible";
 
 export { Content, Root, Trigger };

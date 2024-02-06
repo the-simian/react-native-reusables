@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BackHandler,
   Pressable,
@@ -6,26 +6,26 @@ import {
   type GestureResponderEvent,
   type LayoutChangeEvent,
   type LayoutRectangle,
-} from 'react-native';
-import { createStore, useStore, type StoreApi } from 'zustand';
+} from "react-native";
+import { createStore, useStore, type StoreApi } from "zustand";
 import {
   useRelativePosition,
   type LayoutPosition,
-} from '../hooks/useRelativePosition';
-import { Portal as RNPPortal } from '../portal';
-import * as Slot from '../slot';
+} from "../hooks/useRelativePosition";
+import { Portal as RNPPortal } from "../portal";
+import * as Slot from "../slot";
 import type {
   PositionedContentProps,
   PressableRef,
   SlottablePressableProps,
   SlottableViewProps,
   ViewRef,
-} from '../types';
+} from "../types";
 import type {
   PopoverOverlayProps,
   PopoverPortalProps,
   PopoverRootProps,
-} from './types';
+} from "./types";
 
 interface RootStoreContext {
   triggerPosition: LayoutPosition | null;
@@ -67,13 +67,13 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & PopoverRootProps>(
   }
 );
 
-Root.displayName = 'RootNativePopover';
+Root.displayName = "RootNativePopover";
 
 function usePopoverContext() {
   const context = React.useContext(RootContext);
   if (!context) {
     throw new Error(
-      'Popover compound components cannot be rendered outside the Popover component'
+      "Popover compound components cannot be rendered outside the Popover component"
     );
   }
   return context;
@@ -83,7 +83,7 @@ function useRootStoreContext<T>(selector: (state: RootStoreContext) => T): T {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'Popover compound components cannot be rendered outside the Popover component'
+      "Popover compound components cannot be rendered outside the Popover component"
     );
   }
   return useStore(store, selector);
@@ -93,7 +93,7 @@ function useGetRootStore() {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'Popover compound components cannot be rendered outside the Popover component'
+      "Popover compound components cannot be rendered outside the Popover component"
     );
   }
   return store;
@@ -133,7 +133,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         {...props}
@@ -142,7 +142,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Trigger.displayName = 'TriggerNativePopover';
+Trigger.displayName = "TriggerNativePopover";
 
 /**
  * @warning when using a custom `<PortalHost />`, you might have to adjust the Content's sideOffset to account for nav elements like headers.
@@ -214,7 +214,7 @@ const Overlay = React.forwardRef<
   }
 );
 
-Overlay.displayName = 'OverlayNativePopover';
+Overlay.displayName = "OverlayNativePopover";
 
 /**
  * @info `position`, `top`, `left`, and `maxWidth` style properties are controlled internally. Opt out of this behavior by setting `disablePositioningStyle` to `true`.
@@ -227,8 +227,8 @@ const Content = React.forwardRef<
     {
       asChild = false,
       forceMount,
-      align = 'start',
-      side = 'bottom',
+      align = "start",
+      side = "bottom",
       sideOffset = 0,
       alignOffset = 0,
       avoidCollisions = true,
@@ -255,7 +255,7 @@ const Content = React.forwardRef<
 
     React.useEffect(() => {
       const backHandler = BackHandler.addEventListener(
-        'hardwareBackPress',
+        "hardwareBackPress",
         () => {
           setTriggerPosition(null);
           setContentLayout(null);
@@ -297,8 +297,8 @@ const Content = React.forwardRef<
     return (
       <Component
         ref={ref}
-        role='dialog'
-        nativeID={nativeID}
+        role="dialog"
+        id={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
         onLayout={onLayout}
@@ -309,7 +309,7 @@ const Content = React.forwardRef<
   }
 );
 
-Content.displayName = 'ContentNativePopover';
+Content.displayName = "ContentNativePopover";
 
 const Close = React.forwardRef<PressableRef, SlottablePressableProps>(
   ({ asChild, onPress: onPressProp, disabled = false, ...props }, ref) => {
@@ -334,7 +334,7 @@ const Close = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={ref}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         {...props}
@@ -343,7 +343,7 @@ const Close = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Close.displayName = 'CloseNativePopover';
+Close.displayName = "CloseNativePopover";
 
 export { Close, Content, Overlay, Portal, Root, Trigger, usePopoverContext };
 

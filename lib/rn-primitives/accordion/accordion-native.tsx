@@ -1,18 +1,18 @@
-import React from 'react';
-import { Pressable, View, type GestureResponderEvent } from 'react-native';
-import * as Slot from '../slot';
+import React from "react";
+import { Pressable, View, type GestureResponderEvent } from "react-native";
+import * as Slot from "../slot";
 import type {
   PressableRef,
   SlottablePressableProps,
   SlottableViewProps,
   ViewRef,
-} from '../types';
+} from "../types";
 import type {
   AccordionContentProps,
   AccordionContext,
   AccordionItemProps,
   AccordionRootProps,
-} from './types';
+} from "./types";
 
 const AccordionContext = React.createContext<AccordionContext | null>(null);
 
@@ -49,13 +49,13 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & AccordionRootProps>(
   }
 );
 
-Root.displayName = 'RootNativeAccordion';
+Root.displayName = "RootNativeAccordion";
 
 function useAccordionContext() {
   const context = React.useContext(AccordionContext);
   if (!context) {
     throw new Error(
-      'Accordion compound components cannot be rendered outside the Accordion component'
+      "Accordion compound components cannot be rendered outside the Accordion component"
     );
   }
   return context;
@@ -91,13 +91,13 @@ const Item = React.forwardRef<ViewRef, SlottableViewProps & AccordionItemProps>(
   }
 );
 
-Item.displayName = 'ItemNativeAccordion';
+Item.displayName = "ItemNativeAccordion";
 
 function useAccordionItemContext() {
   const context = React.useContext(AccordionItemContext);
   if (!context) {
     throw new Error(
-      'AccordionItem compound components cannot be rendered outside the AccordionItem component'
+      "AccordionItem compound components cannot be rendered outside the AccordionItem component"
     );
   }
   return context;
@@ -112,7 +112,7 @@ const Header = React.forwardRef<ViewRef, SlottableViewProps>(
     return (
       <Component
         ref={ref}
-        role='heading'
+        role="heading"
         aria-expanded={isExpanded}
         aria-disabled={rootDisabled ?? itemDisabled}
         {...props}
@@ -121,7 +121,7 @@ const Header = React.forwardRef<ViewRef, SlottableViewProps>(
   }
 );
 
-Header.displayName = 'HeaderNativeAccordion';
+Header.displayName = "HeaderNativeAccordion";
 
 const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   (
@@ -144,7 +144,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
 
     function onPress(ev: GestureResponderEvent) {
       if (rootDisabled || itemDisabled) return;
-      if (type === 'single') {
+      if (type === "single") {
         const newValue = collapsible
           ? value === rootValue
             ? undefined
@@ -152,7 +152,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
           : value;
         onValueChange(newValue);
       }
-      if (type === 'multiple') {
+      if (type === "multiple") {
         const rootToArray = toStringArray(rootValue);
         const newValue = collapsible
           ? rootToArray.includes(value)
@@ -172,9 +172,9 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
         key={`${nativeID}-${JSON.stringify(
           rootValue
         )}-${isDisabled}-${collapsible}-${type}`}
-        nativeID={nativeID}
+        id={nativeID}
         aria-disabled={isDisabled}
-        role='button'
+        role="button"
         onPress={onPress}
         accessibilityState={{
           expanded: isExpanded,
@@ -187,7 +187,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Trigger.displayName = 'TriggerNativeAccordion';
+Trigger.displayName = "TriggerNativeAccordion";
 
 const Content = React.forwardRef<
   ViewRef,
@@ -208,13 +208,13 @@ const Content = React.forwardRef<
       ref={ref}
       aria-hidden={!(forceMount || isExpanded)}
       aria-labelledby={nativeID}
-      role={type === 'single' ? 'region' : 'summary'}
+      role={type === "single" ? "region" : "summary"}
       {...props}
     />
   );
 });
 
-Content.displayName = 'ContentNativeAccordion';
+Content.displayName = "ContentNativeAccordion";
 
 export {
   Content,

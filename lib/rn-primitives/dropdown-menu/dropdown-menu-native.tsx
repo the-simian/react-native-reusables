@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BackHandler,
   Pressable,
@@ -7,14 +7,14 @@ import {
   type GestureResponderEvent,
   type LayoutChangeEvent,
   type LayoutRectangle,
-} from 'react-native';
-import { createStore, useStore, type StoreApi } from 'zustand';
+} from "react-native";
+import { createStore, useStore, type StoreApi } from "zustand";
 import {
   useRelativePosition,
   type LayoutPosition,
-} from '../hooks/useRelativePosition';
-import { Portal as RNPPortal } from '../portal';
-import * as Slot from '../slot';
+} from "../hooks/useRelativePosition";
+import { Portal as RNPPortal } from "../portal";
+import * as Slot from "../slot";
 import type {
   ForceMountable,
   PositionedContentProps,
@@ -24,7 +24,7 @@ import type {
   SlottableViewProps,
   TextRef,
   ViewRef,
-} from '../types';
+} from "../types";
 import type {
   DropdownMenuCheckboxItemProps,
   DropdownMenuItemProps,
@@ -36,7 +36,7 @@ import type {
   DropdownMenuSeparatorProps,
   DropdownMenuSubProps,
   DropdownMenuSubTriggerProps,
-} from './types';
+} from "./types";
 
 interface RootStoreContext {
   triggerPosition: LayoutPosition | null;
@@ -84,13 +84,13 @@ const Root = React.forwardRef<
   );
 });
 
-Root.displayName = 'RootNativeDropdownMenu';
+Root.displayName = "RootNativeDropdownMenu";
 
 function useDropdownMenuContext() {
   const context = React.useContext(RootContext);
   if (!context) {
     throw new Error(
-      'DropdownMenu compound components cannot be rendered outside the DropdownMenu component'
+      "DropdownMenu compound components cannot be rendered outside the DropdownMenu component"
     );
   }
   return context;
@@ -100,7 +100,7 @@ function useRootStoreContext<T>(selector: (state: RootStoreContext) => T): T {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'DropdownMenu compound components cannot be rendered outside the DropdownMenu component'
+      "DropdownMenu compound components cannot be rendered outside the DropdownMenu component"
     );
   }
   return useStore(store, selector);
@@ -110,7 +110,7 @@ function useGetRootStore() {
   const store = React.useContext(RootStoreContext);
   if (!store) {
     throw new Error(
-      'DropdownMenu compound components cannot be rendered outside the DropdownMenu component'
+      "DropdownMenu compound components cannot be rendered outside the DropdownMenu component"
     );
   }
   return store;
@@ -150,7 +150,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         aria-expanded={open}
@@ -160,7 +160,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
   }
 );
 
-Trigger.displayName = 'TriggerNativeDropdownMenu';
+Trigger.displayName = "TriggerNativeDropdownMenu";
 
 /**
  * @warning when using a custom `<PortalHost />`, you might have to adjust the Content's sideOffset to account for nav elements like headers.
@@ -232,7 +232,7 @@ const Overlay = React.forwardRef<
   }
 );
 
-Overlay.displayName = 'OverlayNativeDropdownMenu';
+Overlay.displayName = "OverlayNativeDropdownMenu";
 
 /**
  * @info `position`, `top`, `left`, and `maxWidth` style properties are controlled internally. Opt out of this behavior by setting `disablePositioningStyle` to `true`.
@@ -245,8 +245,8 @@ const Content = React.forwardRef<
     {
       asChild = false,
       forceMount,
-      align = 'start',
-      side = 'bottom',
+      align = "start",
+      side = "bottom",
       sideOffset = 0,
       alignOffset = 0,
       avoidCollisions = true,
@@ -273,7 +273,7 @@ const Content = React.forwardRef<
 
     React.useEffect(() => {
       const backHandler = BackHandler.addEventListener(
-        'hardwareBackPress',
+        "hardwareBackPress",
         () => {
           setTriggerPosition(null);
           setContentLayout(null);
@@ -315,8 +315,8 @@ const Content = React.forwardRef<
     return (
       <Component
         ref={ref}
-        role='menu'
-        nativeID={nativeID}
+        role="menu"
+        id={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
         onLayout={onLayout}
@@ -326,7 +326,7 @@ const Content = React.forwardRef<
   }
 );
 
-Content.displayName = 'ContentNativeDropdownMenu';
+Content.displayName = "ContentNativeDropdownMenu";
 
 const Item = React.forwardRef<
   PressableRef,
@@ -363,7 +363,7 @@ const Item = React.forwardRef<
     return (
       <Component
         ref={ref}
-        role='menuitem'
+        role="menuitem"
         onPress={onPress}
         disabled={disabled}
         aria-valuetext={textValue}
@@ -375,16 +375,16 @@ const Item = React.forwardRef<
   }
 );
 
-Item.displayName = 'ItemNativeDropdownMenu';
+Item.displayName = "ItemNativeDropdownMenu";
 
 const Group = React.forwardRef<ViewRef, SlottableViewProps>(
   ({ asChild, ...props }, ref) => {
     const Component = asChild ? Slot.View : View;
-    return <Component ref={ref} role='group' {...props} />;
+    return <Component ref={ref} role="group" {...props} />;
   }
 );
 
-Group.displayName = 'GroupNativeDropdownMenu';
+Group.displayName = "GroupNativeDropdownMenu";
 
 const Label = React.forwardRef<TextRef, SlottableTextProps>(
   ({ asChild, ...props }, ref) => {
@@ -393,7 +393,7 @@ const Label = React.forwardRef<TextRef, SlottableTextProps>(
   }
 );
 
-Label.displayName = 'LabelNativeDropdownMenu';
+Label.displayName = "LabelNativeDropdownMenu";
 
 type FormItemContext =
   | { checked: boolean }
@@ -445,7 +445,7 @@ const CheckboxItem = React.forwardRef<
         <Component
           ref={ref}
           key={`checkbox-${nativeID}-${checked}`}
-          role='checkbox'
+          role="checkbox"
           aria-checked={checked}
           onPress={onPress}
           disabled={disabled}
@@ -459,13 +459,13 @@ const CheckboxItem = React.forwardRef<
   }
 );
 
-CheckboxItem.displayName = 'CheckboxItemNativeDropdownMenu';
+CheckboxItem.displayName = "CheckboxItemNativeDropdownMenu";
 
 function useFormItemContext() {
   const context = React.useContext(FormItemContext);
   if (!context) {
     throw new Error(
-      'CheckboxItem or RadioItem compound components cannot be rendered outside of a CheckboxItem or RadioItem component'
+      "CheckboxItem or RadioItem compound components cannot be rendered outside of a CheckboxItem or RadioItem component"
     );
   }
   return context;
@@ -478,12 +478,12 @@ const RadioGroup = React.forwardRef<
   const Component = asChild ? Slot.View : View;
   return (
     <FormItemContext.Provider value={{ value, onValueChange }}>
-      <Component ref={ref} role='radiogroup' {...props} />
+      <Component ref={ref} role="radiogroup" {...props} />
     </FormItemContext.Provider>
   );
 });
 
-RadioGroup.displayName = 'RadioGroupNativeDropdownMenu';
+RadioGroup.displayName = "RadioGroupNativeDropdownMenu";
 
 type BothFormItemContext = Exclude<FormItemContext, { checked: boolean }> & {
   checked: boolean;
@@ -533,7 +533,7 @@ const RadioItem = React.forwardRef<
         <Component
           ref={ref}
           onPress={onPress}
-          role='radio'
+          role="radio"
           aria-checked={value === itemValue}
           disabled={disabled ?? false}
           accessibilityState={{
@@ -548,7 +548,7 @@ const RadioItem = React.forwardRef<
   }
 );
 
-RadioItem.displayName = 'RadioItemNativeDropdownMenu';
+RadioItem.displayName = "RadioItemNativeDropdownMenu";
 
 function useItemIndicatorContext() {
   return React.useContext(RadioItemContext);
@@ -570,10 +570,10 @@ const ItemIndicator = React.forwardRef<
     }
   }
   const Component = asChild ? Slot.View : View;
-  return <Component ref={ref} role='presentation' {...props} />;
+  return <Component ref={ref} role="presentation" {...props} />;
 });
 
-ItemIndicator.displayName = 'ItemIndicatorNativeDropdownMenu';
+ItemIndicator.displayName = "ItemIndicatorNativeDropdownMenu";
 
 const Separator = React.forwardRef<
   ViewRef,
@@ -582,14 +582,14 @@ const Separator = React.forwardRef<
   const Component = asChild ? Slot.View : View;
   return (
     <Component
-      role={decorative ? 'presentation' : 'separator'}
+      role={decorative ? "presentation" : "separator"}
       ref={ref}
       {...props}
     />
   );
 });
 
-Separator.displayName = 'SeparatorNativeDropdownMenu';
+Separator.displayName = "SeparatorNativeDropdownMenu";
 
 const SubContext = React.createContext<{
   nativeID: string;
@@ -617,13 +617,13 @@ const Sub = React.forwardRef<
   );
 });
 
-Sub.displayName = 'SubNativeDropdownMenu';
+Sub.displayName = "SubNativeDropdownMenu";
 
 function useSubContext() {
   const context = React.useContext(SubContext);
   if (!context) {
     throw new Error(
-      'Sub compound components cannot be rendered outside of a Sub component'
+      "Sub compound components cannot be rendered outside of a Sub component"
     );
   }
   return context;
@@ -649,10 +649,10 @@ const SubTrigger = React.forwardRef<
       <Component
         ref={ref}
         aria-valuetext={textValue}
-        role='menuitem'
+        role="menuitem"
         aria-expanded={open}
         accessibilityState={{ expanded: open, disabled: !!disabled }}
-        nativeID={nativeID}
+        id={nativeID}
         onPress={onPress}
         disabled={disabled}
         aria-disabled={!!disabled}
@@ -662,7 +662,7 @@ const SubTrigger = React.forwardRef<
   }
 );
 
-SubTrigger.displayName = 'SubTriggerNativeDropdownMenu';
+SubTrigger.displayName = "SubTriggerNativeDropdownMenu";
 
 const SubContent = React.forwardRef<
   PressableRef,
@@ -678,11 +678,11 @@ const SubContent = React.forwardRef<
 
   const Component = asChild ? Slot.Pressable : Pressable;
   return (
-    <Component ref={ref} role='group' aria-labelledby={nativeID} {...props} />
+    <Component ref={ref} role="group" aria-labelledby={nativeID} {...props} />
   );
 });
 
-Content.displayName = 'ContentNativeDropdownMenu';
+Content.displayName = "ContentNativeDropdownMenu";
 
 export {
   CheckboxItem,
